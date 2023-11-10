@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import RandomOverSampler
 
+"""----------------Work with dataset----------------"""
+
 cols = ["Sex", "Length", "Diameter", "Height", "Whole_weight", "Shucked_weight", "Viscera_weight", "Shell_weight", "Rings"]
 df = pd.read_csv("abalone.data", names = cols)
 df.head()
@@ -46,6 +48,8 @@ def scale_dataset(dataframe, oversample=False):
 
   return data, x, y
 
+"""----------------K-means algorithm----------------"""
+
 train, x_train, y_train = scale_dataset(train, oversample=True)
 valid, x_valid, y_valid = scale_dataset(valid, oversample=False)
 test, x_test, y_test = scale_dataset(test, oversample=False)
@@ -60,6 +64,8 @@ y_pred = knn_model.predict(x_test)
 
 print(classification_report(y_test, y_pred))
 
+"""----------------Naive Bayes algorithm----------------"""
+
 from sklearn.naive_bayes import GaussianNB
 
 nb_model = GaussianNB()
@@ -67,6 +73,8 @@ nb_model = nb_model.fit(x_train, y_train)
 
 y_pred = nb_model.predict(x_test)
 print(classification_report(y_test, y_pred))
+
+"""----------------Logistic Regression algorithm----------------"""
 
 from sklearn.linear_model import LogisticRegression
 
@@ -76,6 +84,8 @@ lg_model = lg_model.fit(x_train, y_train)
 y_pred = lg_model.predict(x_test)
 print(classification_report(y_test, y_pred))
 
+"""----------------SVM algorithm----------------"""
+
 from sklearn.svm import SVC
 
 svm_model = SVC()
@@ -83,6 +93,8 @@ svm_model = svm_model.fit(x_train, y_train)
 
 y_pred = svm_model.predict(x_test)
 print(classification_report(y_test, y_pred))
+
+"""----------------Choosing best model----------------"""
 
 import tensorflow as tf
 
