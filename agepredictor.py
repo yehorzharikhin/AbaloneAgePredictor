@@ -53,6 +53,8 @@ def get_xy(dataframe, y_label, x_labels=None):
   data = np.hstack((x, y))
 
   return data, x, y
+    
+"""----------------Linear Regression for single dimension----------------"""
 
 _, x_train, y_train = get_xy(train, "Rings", x_labels=["Height"])
 _, x_val, y_val = get_xy(val, "Rings", x_labels=["Height"])
@@ -69,6 +71,8 @@ plt.title("Age vs Height")
 plt.xlabel("Height")
 plt.ylabel("Age")
 plt.show()
+
+"""----------------Linear Regression for multiple dimensions----------------"""
 
 _, x_train_all, y_train_all = get_xy(train, "Rings", x_labels=df.columns[:-1])
 _, x_val_all, y_val_all = get_xy(val, "Rings", x_labels=df.columns[:-1])
@@ -87,6 +91,8 @@ def plot_loss(history):
   plt.legend()
   plt.grid(True)
   plt.show()
+
+"""----------------Neural Net Model for single dimension----------------"""
 
 height_normalizer = tf.keras.layers.Normalization(input_shape=(1,), axis=None)
 height_normalizer.adapt(x_train.reshape(-1))
@@ -115,6 +121,8 @@ plt.title("Age vs Height")
 plt.xlabel("Height")
 plt.ylabel("Age")
 plt.show()
+
+"""----------------Neural Net Model for multiple dimensions----------------"""
 
 normalizer = tf.keras.layers.Normalization(input_shape=(7,), axis=-1)
 normalizer.adapt(x_train_all)
@@ -145,6 +153,7 @@ plt.ylabel("Age")
 plt.show()
 
 """------------------------------------------------------------------------------------------------------"""
+"""----------------Neural Net Regression for single dimension----------------"""
 
 height_normalizer = tf.keras.layers.Normalization(input_shape=(1,), axis=None)
 height_normalizer.adapt(x_train.reshape(-1))
@@ -175,6 +184,8 @@ plt.title("Age vs Height")
 plt.xlabel("Height")
 plt.ylabel("Age")
 plt.show()
+
+"""----------------Neural Net Regression for multiple dimensions----------------"""
 
 all_normalizer = tf.keras.layers.Normalization(input_shape=(7,), axis=-1)
 all_normalizer.adapt(x_train_all)
